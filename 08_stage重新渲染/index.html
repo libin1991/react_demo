@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <script src="../build/JSXTransformer.js"></script><!--用于语法兼容-->
+</head>
+<body>
+<div id="example"></div>
+<div id="ex"></div>
+<script type="text/jsx">
+    var LikeBtn = React.createClass({
+        getInitialState: function(){
+            return{
+                clicked: false
+            };
+        },
+        click: function( event ){
+            this.setState({
+                clicked: !this.state.clicked    //取反
+            })
+        },
+        render: function(){     //此处会重复调用
+            var txt = this.state.clicked ? "点击了":"没点击";
+            return(
+                    <h1 onClick={this.click}>点击变换文本：{txt}</h1>
+            );
+        }
+    });
+    ReactDOM.render(
+            <LikeBtn/>,
+            document.getElementById('ex')
+    );
+</script>
+</body>
+</html>
+

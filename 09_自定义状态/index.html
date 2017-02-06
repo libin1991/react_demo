@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <script src="../build/JSXTransformer.js"></script><!--用于语法兼容-->
+</head>
+<body>
+<div id="example"></div>
+<script type="text/jsx">
+    var Input = React.createClass({
+        getInitialState: function(){
+            return({
+                txt: "Hello React!"     //初始化
+            })
+        },
+        handleChange: function( evt ){
+            this.setState({
+                txt: evt.target.value   //此处赋值，否则输入框内的值不变s
+            });
+        },
+        render: function () {
+            var txt = this.state.txt;
+            return (
+                    <div>
+                        <input type="text" value={txt} onChange={this.handleChange}/>
+                        <h1>{txt}</h1>
+                    </div>
+            );
+        }
+    });
+    ReactDOM.render(
+            <Input/>,
+            document.getElementById('example')
+    );
+
+
+</script>
+</body>
+</html>

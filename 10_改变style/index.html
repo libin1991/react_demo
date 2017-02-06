@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <script src="../build/JSXTransformer.js"></script><!--用于语法兼容-->
+</head>
+<body>
+<div id="example"></div>
+<script type="text/jsx">
+    var X = 1;
+    var ChangeHead = React.createClass({
+        getInitialState: function(){
+            return({
+                opa: 1
+            });
+        },
+        componentDidMount: function(){    //dom装备完毕
+            this.timer = setInterval(function(){
+                var opaTemp = this.state.opa;
+                opaTemp -= .05;
+                X -= .05;
+                if( opaTemp <= 0.1 ){
+                    opaTemp = 1;
+                    X = 1;
+                }
+                this.setState({     //设置状态
+                    opa: opaTemp
+                });
+                console.log( X );
+            }.bind(this), 100 );
+        },
+        render: function(){
+            return( //一般使用状态记录，不用变量
+                    <div>
+                        <h1 style={{opacity: this.state.opa}}>状态改变透明度</h1>
+                        <h2 style={{opacity: X}}>变量改变透明度</h2>
+                    </div>
+            )
+        }
+    });
+    ReactDOM.render(
+            <ChangeHead/>,
+            document.getElementById("example")
+    );
+</script>
+</body>
+</html>

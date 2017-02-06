@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <script src="../build/JSXTransformer.js"></script><!--用于语法兼容-->
+</head>
+<body>
+<div id="example"></div>
+<script type="text/jsx">
+    var NoteList = React.createClass({
+        render: function(){
+            return (
+                <ol>{
+                    React.Children.map(this.props.children, function(child){
+                        return <li>{child}</li>;
+                    })
+                }
+                </ol>
+            );
+        }
+    });
+    ReactDOM.render(
+            <NoteList>
+                <span>我是子元素1</span>
+                <span>我是子元素2</span>
+                <span>我是子元素3</span>
+            </NoteList>,
+            document.getElementById('example')
+    );
+</script>
+</body>
+</html>
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <script src="../build/JSXTransformer.js"></script><!--用于语法兼容-->
+</head>
+<body>
+<div id="example"></div>
+<script type="text/jsx">
+    var Msg = React.createClass({
+        render: function(){
+            var arr = ['.1.', '.2.', '.3.'];
+            var str = '';
+            for ( var i = 0; i < arr.length; i ++ ){
+                str += arr[i];
+            }
+            console.log( str );
+            return <h1>这是html { this.props.name + str }</h1>
+        }
+    });
+    ReactDOM.render(
+        <Msg name="随便起到名字"/>,
+        document.getElementById('example')
+    );
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
